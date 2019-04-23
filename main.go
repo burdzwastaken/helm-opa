@@ -22,7 +22,7 @@ import (
 
 const globalUsage = `
 Checks the rendered chart templates against Open Policy Agent policies.
-All policies under policies/ will be evaluated. 
+All policies under policies/ will be evaluated.
 `
 
 var (
@@ -86,7 +86,7 @@ func run(cmd *cobra.Command, args []string) error {
 
 	foundViolations := false
 
-	compiler, err := buildCopmiler(args[0] + "/" + "policies")
+	compiler, err := buildCompiler(args[0] + "/" + "policies")
 
 	for _, name := range sortedKeys {
 		data := out[name]
@@ -149,7 +149,7 @@ func processFile(fileName string, data string, compiler *ast.Compiler) (bool, er
 	return foundViolations, err
 }
 
-func buildCopmiler(path string) (*ast.Compiler, error) {
+func buildCompiler(path string) (*ast.Compiler, error) {
 	files, err := ioutil.ReadDir(path)
 	if err != nil {
 		return nil, err
